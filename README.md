@@ -1,6 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Task Tracker
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
+Created using the following [tutorial](https://www.youtube.com/watch?v=w7ejDZ8SWv8) by Travery Media
 
 ## Available Scripts
 
