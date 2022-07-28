@@ -7,6 +7,9 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 
 function App() {
+
+  const TASK_API_BASE_URL = "https://my-json-server.typicode.com/jaymitp/task-tracker"
+
   const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([]);
 
@@ -20,21 +23,21 @@ function App() {
 
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch("http://localhost:5000/tasks");
+    const res = await fetch(`${TASK_API_BASE_URL}/tasks`);
     const data = await res.json();
     return data;
   };
 
   // Fetch Task
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const res = await fetch(`${TASK_API_BASE_URL}/tasks/${id}`);
     const data = await res.json();
     return data;
   };
 
   // Add task
   const addTask = async (task) => {
-    const res = await fetch("http://localhost:5000/tasks", {
+    const res = await fetch(`${TASK_API_BASE_URL}/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +51,7 @@ function App() {
 
   // Delete task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, { method: "DELETE" });
+    await fetch(`${TASK_API_BASE_URL}/tasks/${id}`, { method: "DELETE" });
 
     setTasks(
       tasks.filter((task) => {
@@ -62,7 +65,7 @@ function App() {
     const task = await fetchTask(id);
     const updatedTask = { ...task, reminder: !task.reminder };
 
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`${TASK_API_BASE_URL}/tasks/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
